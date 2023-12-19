@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/28 05:15:43 by goda-sil          #+#    #+#             */
-/*   Updated: 2023/12/04 18:06:44 by goda-sil         ###   ########.fr       */
+/*   Created: 2022/11/11 17:22:52 by goda-sil          #+#    #+#             */
+/*   Updated: 2022/11/21 15:37:54 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	init(t_game *play)
+void	*ft_calloc(size_t	nmemb, size_t size)
 {
-	play->C_numbers = 0;
-	play->E_numbers = 0;
-	play->P_numbers = 0;
-	play->img_width = 32;
-	play->img_height = 32;
-}
+	void	*pointer;
 
-int	main(int argc, char **argv)
-{
-	t_game	play;
-
-	(void) argc;
-	init(&play);
-	check_map(&play, argv[1]);
-	start(&play);
+	pointer = malloc(nmemb * size);
+	if (pointer == NULL)
+		return (pointer);
+	ft_bzero(pointer, size * nmemb);
+	return (pointer);
 }

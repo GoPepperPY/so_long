@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   aux.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/28 05:15:43 by goda-sil          #+#    #+#             */
-/*   Updated: 2023/12/04 18:06:44 by goda-sil         ###   ########.fr       */
+/*   Created: 2023/11/23 14:47:15 by goda-sil          #+#    #+#             */
+/*   Updated: 2023/11/29 16:42:53 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	init(t_game *play)
+// return line numbers of the map
+int	get_line_number(char *argv)
 {
-	play->C_numbers = 0;
-	play->E_numbers = 0;
-	play->P_numbers = 0;
-	play->img_width = 32;
-	play->img_height = 32;
-}
+	char	*line;
+	int		counter;
+	int		file;
 
-int	main(int argc, char **argv)
-{
-	t_game	play;
-
-	(void) argc;
-	init(&play);
-	check_map(&play, argv[1]);
-	start(&play);
+	counter = 0;
+	file = open(argv, O_RDONLY);
+	while (1)
+	{
+		line = get_next_line(file);
+		if (line == NULL)
+			break ;
+		free(line);
+		counter++;
+	}
+	free(line);
+	close(file);
+	return (counter);
 }

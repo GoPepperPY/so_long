@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/28 05:15:43 by goda-sil          #+#    #+#             */
-/*   Updated: 2023/12/04 18:06:44 by goda-sil         ###   ########.fr       */
+/*   Created: 2022/11/08 15:49:21 by goda-sil          #+#    #+#             */
+/*   Updated: 2023/11/30 15:20:44 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	init(t_game *play)
+char	*ft_strchr(const char *s, int c)
 {
-	play->C_numbers = 0;
-	play->E_numbers = 0;
-	play->P_numbers = 0;
-	play->img_width = 32;
-	play->img_height = 32;
-}
+	char	*temporary;
+	int		counter;
 
-int	main(int argc, char **argv)
-{
-	t_game	play;
-
-	(void) argc;
-	init(&play);
-	check_map(&play, argv[1]);
-	start(&play);
+	if (!s)
+		return (NULL);
+	counter = 0;
+	temporary = (char *)s;
+	while (s[counter] != c)
+	{
+		if (s[counter] == '\0')
+			return (NULL);
+		temporary++;
+		counter++;
+	}
+	return (temporary);
 }

@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/28 05:15:43 by goda-sil          #+#    #+#             */
-/*   Updated: 2023/12/04 18:06:44 by goda-sil         ###   ########.fr       */
+/*   Created: 2022/11/07 14:01:35 by goda-sil          #+#    #+#             */
+/*   Updated: 2022/11/21 11:31:35 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	init(t_game *play)
+void	ft_bzero(void *s, size_t n)
 {
-	play->C_numbers = 0;
-	play->E_numbers = 0;
-	play->P_numbers = 0;
-	play->img_width = 32;
-	play->img_height = 32;
-}
+	size_t	counter;
 
-int	main(int argc, char **argv)
-{
-	t_game	play;
-
-	(void) argc;
-	init(&play);
-	check_map(&play, argv[1]);
-	start(&play);
+	counter = 0;
+	while (counter < n)
+		((unsigned char *)s)[counter++] = '\0';
 }
