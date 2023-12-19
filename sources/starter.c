@@ -6,7 +6,7 @@
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 11:12:34 by goda-sil          #+#    #+#             */
-/*   Updated: 2023/12/06 15:40:16 by goda-sil         ###   ########.fr       */
+/*   Updated: 2023/12/19 19:35:30 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ int		handle_hook(int key, t_game *play)
 {
 	if (key == XK_Escape)
 		exit (1);
-	if (key == XK_w)
+	if (key == XK_w || key == XK_Up)
 		action_moves('w', play);
-	if (key == XK_a)
+	if (key == XK_a || key == XK_Left)
 		action_moves('a', play);
-	if (key == XK_s)
+	if (key == XK_s || key == XK_Down)
 		action_moves('s', play);
-	if (key == XK_d)
+	if (key == XK_d || key == XK_Right)
 		action_moves('d', play);
 	return (0);
 }
@@ -80,6 +80,7 @@ int		handle_hook(int key, t_game *play)
 void	action(t_game *play)
 {
 	mlx_hook(play->window, KeyPress, KeyPressMask, &handle_hook, play);
+	mlx_loop(play->mlx);
 }
 
 void	start(t_game *play)

@@ -37,4 +37,10 @@ void	action_moves(char c, t_game *play)
 	
 	if (c == 'w' && next_move_checker(x, y - 1, play) == 0)
 		body_in_motion(x, y - 1, play);
+    if (c == 'a' && next_move_checker(x - 1, y, play) == 0)
+        body_in_motion(x - 1, y, play);
+    if (c == 's' && next_move_checker(x, y + 1, play) == 0)
+        body_in_motion(x, y + 1, play);
+    if (c == 'd' && next_move_checker(x + 1, y, play) == 0)
+        body_in_motion(x + 1, y, play);
 }
