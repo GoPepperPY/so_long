@@ -6,7 +6,7 @@
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 11:12:34 by goda-sil          #+#    #+#             */
-/*   Updated: 2023/12/19 19:35:30 by goda-sil         ###   ########.fr       */
+/*   Updated: 2023/12/20 19:26:23 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	draw_game(t_game *play)
 int		handle_hook(int key, t_game *play)
 {
 	if (key == XK_Escape)
-		exit (1);
+		get_out(play);
 	if (key == XK_w || key == XK_Up)
 		action_moves('w', play);
 	if (key == XK_a || key == XK_Left)

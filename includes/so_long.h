@@ -6,7 +6,7 @@
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 05:14:37 by goda-sil          #+#    #+#             */
-/*   Updated: 2023/12/06 15:41:30 by goda-sil         ###   ########.fr       */
+/*   Updated: 2023/12/20 20:37:34 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_game{
 	void	*exit_img;
 	int		img_height;
 	int		img_width;
+	int		collected;
 }	t_game;
 
 # define W_BIND "./images/player.xpm"
@@ -72,7 +73,6 @@ typedef struct s_game{
 # define DOWN 65364
 # define RIGHT 65363
 
-void	start_init(t_game *play);
 void	start(t_game *play);
 void	check_map(t_game *play, char *argv);
 void 	attribute_char_map(t_game *play, char *argv);
@@ -89,6 +89,8 @@ void	drawing(t_game *play, void	*image, int x, int y);
 void	action(t_game *play);
 void	action_moves(char c, t_game *play);
 void	body_in_motion(int x, int y, t_game *play);
+void	get_out(t_game *play);
+void	free_map(char **map, t_game *play);
 
 // int		get_cols_number(char *argv);
 int		get_line_number(char *argv);

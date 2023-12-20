@@ -6,7 +6,7 @@
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 14:48:23 by goda-sil          #+#    #+#             */
-/*   Updated: 2023/12/06 15:38:44 by goda-sil         ###   ########.fr       */
+/*   Updated: 2023/12/20 20:51:44 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,50 @@ int	next_move_checker(int x, int y, t_game *play)
 {
 	if (play->map[y][x] == '1')
 		return (1);
+	if (play->map[y][x] == 'C')
+	{
+		play->collected++;
+		play->map[y][x] = '0';
+	}
+	if (play->map[y][x] == 'E')
+	{
+		if (play->collected == play->C_numbers)
+			get_out(play);
+		else
+			return (1);
+	}
 	return (0);
+}
+
+void	free_map(char **map, t_game *play)
+{
+	int	counter;
+
+	counter = 0;
+	while (counter < play->window_row)
+	{
+		free(map[counter]);
+		counter++;
+	}
+	free(map);
+}
+
+void	get_out(t_game *play)
+{
+	free_map(play->temp_map, play);
+	free_map(play->map, play);
+	mlx_destroy_image(play->mlx, play->w_img);
+	mlx_destroy_image(play->mlx, play->a_img);
+	mlx_destroy_image(play->mlx, play->s_img);
+	mlx_destroy_image(play->mlx, play->d_img);
+	mlx_destroy_image(play->mlx, play->exit_img);
+	mlx_destroy_image(play->mlx, play->collect_img);
+	mlx_destroy_image(play->mlx, play->floor_img);
+	mlx_destroy_image(play->mlx, play->wall_img);
+	mlx_destroy_window(play->mlx, play->window);
+	mlx_destroy_display(play->mlx);
+	free(play->mlx);
+	exit(0);
 }
 
 void	body_in_motion(int x, int y, t_game *play)
