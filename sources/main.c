@@ -22,12 +22,34 @@ void	init(t_game *play)
 	play->collected = 0;
 }
 
+int	check_arguments(char *argv)
+{
+	int	length;
+	int counter;
+
+	length = ft_strlen(argv);
+	if (argv[length - 4] != '.')
+		return (0);
+	if (argv[length - 3] != 'b')
+		return (0);
+	if (argv[length - 2] != 'e')
+		return (0);
+	if (argv[length - 1] != 'r')
+		return (0);
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	play;
 
 	(void) argc;
-	init(&play);
-	check_map(&play, argv[1]);
-	start(&play);
+	if (argc == 3)
+	{
+		if (check_arguments(argv[2]) == 0)
+			return (0);
+		init(&play);
+		check_map(&play, argv[1]);
+		start(&play);
+	}
 }
