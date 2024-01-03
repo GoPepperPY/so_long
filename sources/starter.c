@@ -6,7 +6,7 @@
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 11:12:34 by goda-sil          #+#    #+#             */
-/*   Updated: 2023/12/20 19:26:23 by goda-sil         ###   ########.fr       */
+/*   Updated: 2024/01/03 14:48:52 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	draw_game(t_game *play)
 	}
 }
 
-int		handle_hook(int key, t_game *play)
+int	handle_hook(int key, t_game *play)
 {
 	if (key == XK_Escape)
 		get_out(play);
@@ -75,12 +75,6 @@ int		handle_hook(int key, t_game *play)
 	if (key == XK_d || key == XK_Right)
 		action_moves('d', play);
 	return (0);
-}
-
-void	action(t_game *play)
-{
-	mlx_hook(play->window, KeyPress, KeyPressMask, &handle_hook, play);
-	mlx_loop(play->mlx);
 }
 
 void	start(t_game *play)

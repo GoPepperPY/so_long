@@ -6,7 +6,7 @@
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 05:15:43 by goda-sil          #+#    #+#             */
-/*   Updated: 2023/12/20 18:29:37 by goda-sil         ###   ########.fr       */
+/*   Updated: 2024/01/03 15:28:36 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	init(t_game *play)
 	play->img_width = 32;
 	play->img_height = 32;
 	play->collected = 0;
+	play->moves = 0;
 }
 
 int	check_arguments(char *argv)
 {
 	int	length;
-	int counter;
 
 	length = ft_strlen(argv);
 	if (argv[length - 4] != '.')
@@ -43,10 +43,9 @@ int	main(int argc, char **argv)
 {
 	t_game	play;
 
-	(void) argc;
-	if (argc == 3)
+	if (argc == 2)
 	{
-		if (check_arguments(argv[2]) == 0)
+		if (check_arguments(argv[1]) == 0)
 			return (0);
 		init(&play);
 		check_map(&play, argv[1]);

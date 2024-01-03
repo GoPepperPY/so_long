@@ -6,7 +6,7 @@
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:32:15 by goda-sil          #+#    #+#             */
-/*   Updated: 2023/12/20 20:38:24 by goda-sil         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:37:31 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ void	map_viability_checker(t_game *play)
 {
 	if (map_is_rectangular(play) == 1)
 	{
-		ft_printf("The lines must be the same length!\n");
+		free_map(play->map, play);
 		exit(1);
 	}
 	if (map_wall_escape(play) == 1)
 	{
-		ft_printf("Missing bricks in the border!\n");
+		free_map(play->map, play);
 		exit(1);
 	}
 	if (check_the_intruder(play) == 1)
 	{
-		ft_printf("Intruder!\n");
+		free_map(play->map, play);
 		exit(1);
 	}
 	if (everything_needed(play) == 1)
 	{
-		ft_printf("Missing material!\n");
+		free_map(play->map, play);
 		exit(1);
 	}
 }
@@ -70,6 +70,11 @@ void	check_map(t_game *play, char *argv)
 	play->window_row = get_line_number(argv);
 	attribute_char_map(play, argv);
 	play->window_col = ft_strlen(play->map[0]);
+	if (play->window_col == 0)
+	{
+		free_map(play->map, play);
+		exit (1);
+	}
 	map_viability_checker(play);
 	find_p(play);
 	the_way_out(play, argv);

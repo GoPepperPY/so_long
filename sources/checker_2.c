@@ -6,7 +6,7 @@
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 21:31:43 by goda-sil          #+#    #+#             */
-/*   Updated: 2023/12/20 20:39:36 by goda-sil         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:37:23 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	the_way_out_extension(t_game *play, char **map, int x, int y)
 		return (0);
 	if (map[y][x] == 'E')
 	{
-		exits++;	
+		exits++;
 		map[y][x] = 'X';
 		return (0);
 	}
@@ -91,7 +91,6 @@ void	the_way_out(t_game *play, char *argv)
 	if (the_way_out_extension(play, play->temp_map, play->P_x_start, \
 	play->P_y_start) == 0)
 	{
-		ft_printf("IMPOSSIBLE TO FINISH THIS!!!!!\n");
 		free_map(play->map, play);
 		free_map(play->temp_map, play);
 		exit (0);
