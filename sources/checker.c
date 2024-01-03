@@ -6,7 +6,7 @@
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 19:09:43 by goda-sil          #+#    #+#             */
-/*   Updated: 2024/01/03 15:09:58 by goda-sil         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:39:29 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,15 +104,8 @@ int	everything_needed(t_game *play)
 	return (0);
 }
 
-int	handle_exit(t_game *play)
-{
-	get_out(play);
-	exit(0);
-}
-
 void	action(t_game *play)
 {
 	mlx_hook(play->window, KeyPress, KeyPressMask, &handle_hook, play);
-	mlx_hook(play->window, DestroyNotify, ButtonPressMask, &handle_exit, play);
 	mlx_loop(play->mlx);
 }

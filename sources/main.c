@@ -6,7 +6,7 @@
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 05:15:43 by goda-sil          #+#    #+#             */
-/*   Updated: 2024/01/03 15:28:36 by goda-sil         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:38:49 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	init(t_game *play)
 	play->img_width = 32;
 	play->img_height = 32;
 	play->collected = 0;
-	play->moves = 0;
 }
 
 int	check_arguments(char *argv)
