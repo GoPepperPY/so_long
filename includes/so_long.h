@@ -6,7 +6,7 @@
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 05:14:37 by goda-sil          #+#    #+#             */
-/*   Updated: 2023/12/20 20:37:34 by goda-sil         ###   ########.fr       */
+/*   Updated: 2024/01/03 15:28:22 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_game{
 	int		img_height;
 	int		img_width;
 	int		collected;
+	int		moves;
 }	t_game;
 
 # define W_BIND "./images/player.xpm"
