@@ -6,7 +6,7 @@
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 21:31:43 by goda-sil          #+#    #+#             */
-/*   Updated: 2024/01/03 12:37:23 by goda-sil         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:34:54 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	find_p(t_game *play)
 		{
 			if (play->map[counter_one][counter_two] == 'P')
 			{
-				play->P_x_start = counter_two;
-				play->P_y_start = counter_one;
+				play->p_x_start = counter_two;
+				play->p_y_start = counter_one;
 			}
 		}
 	}
@@ -79,20 +79,26 @@ int	the_way_out_extension(t_game *play, char **map, int x, int y)
 	the_way_out_extension(play, map, x - 1, y);
 	the_way_out_extension(play, map, x, y + 1);
 	the_way_out_extension(play, map, x, y - 1);
-	if (exits == 1 && collects == play->C_numbers)
+	if (exits == 1 && collects == play->c_numbers)
 		return (1);
-	else
-		return (0);
+	return (0);
+}
+
+int	handle_exit(t_game *play)
+{
+	get_out(play);
+	exit(0);
 }
 
 void	the_way_out(t_game *play, char *argv)
 {
 	init_temp_map(play, argv);
-	if (the_way_out_extension(play, play->temp_map, play->P_x_start, \
-	play->P_y_start) == 0)
+	if (the_way_out_extension(play, play->temp_map, play->p_x_start, \
+	play->p_y_start) == 0)
 	{
 		free_map(play->map, play);
 		free_map(play->temp_map, play);
+		ft_printf("Can't start the game!\n");
 		exit (0);
 	}
 }

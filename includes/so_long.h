@@ -6,17 +6,17 @@
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 05:14:37 by goda-sil          #+#    #+#             */
-/*   Updated: 2024/01/03 15:28:22 by goda-sil         ###   ########.fr       */
+/*   Updated: 2024/01/15 11:49:12 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "../minilibx-linux/mlx.h"
-#include "../minilibx-linux/mlx_int.h"
-#include <stdlib.h>
-#include <stdio.h>
+# include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
+# include <stdlib.h>
+# include <stdio.h>
 # include <unistd.h>
 # include <string.h>
 # include <strings.h>
@@ -35,11 +35,11 @@ typedef struct s_game{
 	int		window_col;
 	int		window_row;
 	char	**map;
-	int		C_numbers;
-	int		E_numbers;
-	int		P_numbers;
-	int		P_x_start;
-	int		P_y_start;
+	int		c_numbers;
+	int		e_numbers;
+	int		p_numbers;
+	int		p_x_start;
+	int		p_y_start;
 	char	**temp_map;
 	void	*w_img;
 	void	*a_img;
@@ -76,7 +76,7 @@ typedef struct s_game{
 
 void	start(t_game *play);
 void	check_map(t_game *play, char *argv);
-void 	attribute_char_map(t_game *play, char *argv);
+void	attribute_char_map(t_game *play, char *argv);
 void	map_viability_checker(t_game *play);
 void	*ft_calloc(size_t	nmemb, size_t size);
 void	ft_bzero(void *s, size_t n);
@@ -112,6 +112,7 @@ int		print_pointer(unsigned long long pointer);
 int		the_way_out_extension(t_game *play, char **map, int x, int y);
 int		handle_hook(int key, t_game *play);
 int		next_move_checker(int x, int y, t_game *play);
+int		handle_exit(t_game *play);
 
 char	*read_file(int fd, char *storage);
 char	*clear(char *storage);

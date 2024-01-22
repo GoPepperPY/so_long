@@ -6,7 +6,7 @@
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 19:09:43 by goda-sil          #+#    #+#             */
-/*   Updated: 2024/01/03 15:09:58 by goda-sil         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:39:38 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,27 +87,22 @@ int	everything_needed(t_game *play)
 		while (play->map[counter_one][++counter_two])
 		{
 			if (play->map[counter_one][counter_two] == 'E')
-				play->E_numbers++;
+				play->e_numbers++;
 			if (play->map[counter_one][counter_two] == 'C')
-				play->C_numbers++;
+				play->c_numbers++;
 			if (play->map[counter_one][counter_two] == 'P')
-				play->P_numbers++;
+				play->p_numbers++;
 		}
 	}
-	if (play->C_numbers == 0 || play->E_numbers == 0 || play->P_numbers == 0)
+	if (play->c_numbers == 0 || play->e_numbers == 0 || play->p_numbers == 0)
 		return (1);
-	if (play->P_numbers != 1)
+	if (play->p_numbers != 1)
 	{
+		ft_printf("You have more than one player!\n");
 		free_map(play->map, play);
 		exit (1);
 	}
 	return (0);
-}
-
-int	handle_exit(t_game *play)
-{
-	get_out(play);
-	exit(0);
 }
 
 void	action(t_game *play)

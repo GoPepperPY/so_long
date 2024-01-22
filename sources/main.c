@@ -6,7 +6,7 @@
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 05:15:43 by goda-sil          #+#    #+#             */
-/*   Updated: 2024/01/03 15:28:36 by goda-sil         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:17:17 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	init(t_game *play)
 {
-	play->C_numbers = 0;
-	play->E_numbers = 0;
-	play->P_numbers = 0;
+	play->c_numbers = 0;
+	play->e_numbers = 0;
+	play->p_numbers = 0;
 	play->img_width = 32;
 	play->img_height = 32;
 	play->collected = 0;
@@ -46,7 +46,10 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		if (check_arguments(argv[1]) == 0)
+		{
+			ft_printf("Invalid extension!\n");
 			return (0);
+		}
 		init(&play);
 		check_map(&play, argv[1]);
 		start(&play);

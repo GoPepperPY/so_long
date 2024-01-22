@@ -6,7 +6,7 @@
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 14:48:23 by goda-sil          #+#    #+#             */
-/*   Updated: 2024/01/03 15:29:42 by goda-sil         ###   ########.fr       */
+/*   Updated: 2024/01/15 11:52:00 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	next_move_checker(int x, int y, t_game *play)
 	}
 	if (play->map[y][x] == 'E')
 	{
-		if (play->collected == play->C_numbers)
+		if (play->collected == play->c_numbers)
 			get_out(play);
 		else
 			return (1);
@@ -65,11 +65,11 @@ void	get_out(t_game *play)
 void	body_in_motion(int x, int y, t_game *play)
 {
 	drawing(play, play->w_img, x, y);
-	drawing(play, play->floor_img, play->P_x_start, play->P_y_start);
+	drawing(play, play->floor_img, play->p_x_start, play->p_y_start);
 	play->moves++;
 	ft_printf("MOVES: %d\n", play->moves);
-	play->P_x_start = x;
-	play->P_y_start = y;
+	play->p_x_start = x;
+	play->p_y_start = y;
 }
 
 void	action_moves(char c, t_game *play)
@@ -77,8 +77,8 @@ void	action_moves(char c, t_game *play)
 	int	x;
 	int	y;
 
-	x = play->P_x_start;
-	y = play->P_y_start;
+	x = play->p_x_start;
+	y = play->p_y_start;
 	if (c == 'w' && next_move_checker(x, y - 1, play) == 0)
 		body_in_motion(x, y - 1, play);
 	if (c == 'a' && next_move_checker(x - 1, y, play) == 0)

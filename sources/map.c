@@ -6,7 +6,7 @@
 /*   By: goda-sil <goda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:32:15 by goda-sil          #+#    #+#             */
-/*   Updated: 2024/01/03 12:37:31 by goda-sil         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:42:47 by goda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,25 @@ void	map_viability_checker(t_game *play)
 {
 	if (map_is_rectangular(play) == 1)
 	{
+		ft_printf("Map not rectangular!\n");
 		free_map(play->map, play);
 		exit(1);
 	}
 	if (map_wall_escape(play) == 1)
 	{
+		ft_printf("Is missing a brick!\n");
 		free_map(play->map, play);
 		exit(1);
 	}
 	if (check_the_intruder(play) == 1)
 	{
+		ft_printf("There's a invalid character in the map!\n");
 		free_map(play->map, play);
 		exit(1);
 	}
 	if (everything_needed(play) == 1)
 	{
+		ft_printf("Is missing material!\n");
 		free_map(play->map, play);
 		exit(1);
 	}
@@ -72,6 +76,7 @@ void	check_map(t_game *play, char *argv)
 	play->window_col = ft_strlen(play->map[0]);
 	if (play->window_col == 0)
 	{
+		ft_printf("Empty line in the beggining!\n");
 		free_map(play->map, play);
 		exit (1);
 	}
